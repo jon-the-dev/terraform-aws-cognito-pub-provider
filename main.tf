@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">= 1.5"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.0"
+    }
+  }
+}
+
 data "aws_region" "current" {}
 
 locals {
@@ -7,8 +18,6 @@ locals {
     Environment = var.env
   }
 }
-
-
 
 provider "aws" {
   region = "us-east-1"
@@ -28,6 +37,8 @@ resource "aws_cognito_user_pool" "main" {
   }
 
   auto_verified_attributes = ["email"]
+
+  tags = local.common_tags
 }
 
 # Facebook Identity Provider

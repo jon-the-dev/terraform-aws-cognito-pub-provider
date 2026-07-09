@@ -13,16 +13,6 @@ variable "env" {
   description = "Environment name, such as 'dev', 'Test', or 'Production'"
 }
 
-variable "topic_name" {
-  type        = string
-  description = "The name of the SNS topic to be created."
-}
-
-variable "service_identifiers" {
-  type        = list(string)
-  description = "List of services allowed to publish to this SNS topic."
-}
-
 # Variable definitions
 variable "facebook_client_id" {
   type        = string
@@ -34,6 +24,7 @@ variable "facebook_client_secret" {
   type        = string
   default     = ""
   description = "Facebook App Client Secret"
+  sensitive   = true
 }
 
 variable "google_client_id" {
@@ -46,6 +37,7 @@ variable "google_client_secret" {
   type        = string
   default     = ""
   description = "Google Client Secret"
+  sensitive   = true
 }
 
 variable "microsoft_client_id" {
@@ -58,4 +50,5 @@ variable "microsoft_client_secret" {
   type        = string
   default     = ""
   description = "Microsoft365 Client Secret"
+  sensitive   = true
 }
